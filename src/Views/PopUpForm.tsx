@@ -11,33 +11,42 @@ import {
   FormControl,
   FormLabel,
   Input,
-  useDisclosure,
   Select,
-
 } from "@chakra-ui/react";
 
 export default function PopUpForm(props: any) {
-
-    console.log("Props: ",props)
-    
+  const MONTH_DURATION:any = {
+    "1m": 1,
+    "3m": 3,
+    "6m": 6,
+    "12m": 12,
+  }
 
   const handleAddUser = (e: any) => {
-    console.log("handleAddUser method started...");
     e.preventDefault();
-    console.log("userJSONdata => ", createJSONObj(e.target))
-    alert('Data Submitted!')
+    console.log("userJSONdata => ", createJSONObj(e.target));
+    alert("Data Submitted!");
     props.close();
   };
 
-    const createJSONObj = (userData:any) => {
-        let JSONdata = {
-            name: userData[0].value, 
-            gender: userData[1].value, 
-            subscriptionPlan: userData[2].value, 
-            validity: userData[3].value
-        }
-        return(JSONdata)
-    }
+  const createJSONObj = (userData: any) => {
+    const [startDate, endDate] = calculateValidity(userData[3].value);
+    let JSONdata = {
+      name: userData[0].value,
+      gender: userData[1].value,
+      subscriptionPlan: userData[2].value,
+      startDate: startDate,
+      endDate: endDate,
+    };
+    return JSONdata;
+  };
+
+  const calculateValidity = (planDuration:string) => {
+    let now = new Date();
+    let startDate = now;
+    let endDate = new Date(now.setMonth(now.getMonth() + MONTH_DURATION[planDuration]))
+    return([startDate, endDate])
+  }
 
   return (
     <>
@@ -71,7 +80,7 @@ export default function PopUpForm(props: any) {
                   <option value="platinum">Platinum</option>
                 </Select>
               </FormControl>
-              
+
               <FormControl>
                 <FormLabel>Plan Duration</FormLabel>
                 <Select placeholder="Select Duration">

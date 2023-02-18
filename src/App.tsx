@@ -5,11 +5,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Login from "./Pages/Login";
 import Dashboard from "./Pages/Dashboard";
-
-// require('dotenv').config()
+import Nav from "./Components/Nav";
 
 export const App = () => (
   <ChakraProvider>
+    <Nav />
     <Router>
       <Routes>
         <Route path="/" element={ <Login /> } />
