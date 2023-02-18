@@ -1,0 +1,17 @@
+UserDB = [
+    {
+        user,
+        membership,
+        startDate,
+        endDate,
+        
+    }
+    {
+        name: 'User8', 
+        gender: 'Male', 
+        subscriptionStatus: 'Active', 
+        subscriptionPlan: 'Platinum', 
+        subscriptionTypeId: 3, 
+        validity: '1 May 2023'
+    }
+]

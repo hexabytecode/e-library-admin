@@ -2,24 +2,22 @@ import React, { useState } from "react";
 import {
   Button,
   Stack,
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-  Input,
 } from "@chakra-ui/react";
-import { Navigate } from "react-router-dom"
+import { PhoneIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
+import PopUpForm from "../Views/PopUpForm";
 
-export default function Form() {
-  const [login, setLogin] = useState(false);
-
-  if (login){
-    return <Navigate to="/dashboard" />
+export default function Dashboard() {
+  const [isFormOpen, setFormOpen] = useState(false);
+  const parentToChild = () => {
+    setFormOpen(true);
   }
 
   return (
-      <Stack>
-        <div>Hello, You are inside!</div>
-      </Stack>
+    <Stack align={"center"}>
+      <Button maxW={200} colorScheme={"blue"} onClick={() => parentToChild()}>
+        Add User <AddIcon ml={2} boxSize={3} />
+      </Button>
+      <PopUpForm show={isFormOpen} close={() => setFormOpen(false)}/>
+    </Stack>
   );
 }
