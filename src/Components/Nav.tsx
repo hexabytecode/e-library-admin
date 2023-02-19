@@ -22,16 +22,30 @@ import {
   ChevronRightIcon,
   AddIcon,
 } from '@chakra-ui/icons';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PopUpForm from "../Views/PopUpForm";
+import { useLocation, useNavigate } from "react-router-dom";
 
 
 export default function WithSubnavigation() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [currentRoute, setRoute] = useState("")
   const { isOpen, onToggle } = useDisclosure();
   const [isFormOpen, setFormOpen] = useState(false);
   const parentToChild = () => {
     setFormOpen(true);
   }
+
+  const handleLogout = () => {
+    navigate("/");
+  };
+
+  useEffect(() => {
+    setRoute(location.pathname)
+    console.log(location.pathname)
+  });
+
   return (
     <Box w={"100vw"} minH={"60px"}>
       <Flex
@@ -68,12 +82,12 @@ export default function WithSubnavigation() {
             Logo
           </Text>
 
-          <Flex display={{ base: "none", md: "flex" }} ml={10}>
+          { (currentRoute !== '/') && <Flex display={{ base: "none", md: "flex" }} ml={10}>
             <DesktopNav />
-          </Flex>
+          </Flex>}
         </Flex>
 
-        <Stack
+        { (currentRoute !== '/') && <Stack
           flex={{ base: 1, md: 0 }}
           justify={"flex-end"}
           direction={"row"}
@@ -92,10 +106,11 @@ export default function WithSubnavigation() {
             colorScheme={"red"}
             variant={"outline"}
             cursor={"pointer"}
+            onClick={handleLogout}
           >
             Logout
           </Button>
-        </Stack>
+        </Stack>}
       </Flex>
 
       <Collapse in={isOpen} animateOpacity>

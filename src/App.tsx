@@ -5,14 +5,28 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Login from "./Pages/Login";
 import Dashboard from "./Pages/Dashboard";
+import AboutUs from "./Pages/Aboutus";
+import ContactUs from "./Pages/ContactUs";
+import Nav from "./Components/Nav";
+
+function Root() {
+  return (
+    <div>
+      <Nav />
+      <Routes>
+        <Route path="/" element={ <Login /> } />
+        <Route path="/dashboard" element={ <Dashboard /> } />
+        <Route path="/about" element={ <AboutUs /> } />
+        <Route path="/contact" element={ <ContactUs /> } />
+      </Routes>
+    </div>
+  );
+}
 
 export const App = () => (
   <ChakraProvider>
     <Router>
-      <Routes>
-        <Route path="/" element={ <Login /> } />
-        <Route path="/dashboard" element={ <Dashboard /> } />
-      </Routes>
+      <Root />
     </Router>
   </ChakraProvider>
 );

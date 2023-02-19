@@ -23,7 +23,6 @@ import {
 import { PhoneIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
 import PopUpForm from "../Views/PopUpForm";
 import JsonData from "../data.json";
-import Nav from "../Components/Nav";
 
 export default function Dashboard() {
   const [isFormOpen, setFormOpen] = useState(false);
@@ -33,7 +32,6 @@ export default function Dashboard() {
 
   return (
     <Stack align={"center"}>
-      <Nav />
       <Box mx="200px">
         <Heading as="h2" size="xl">
           {"User Subscriptions"}
