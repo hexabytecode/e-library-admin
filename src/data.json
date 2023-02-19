@@ -1,0 +1,90 @@
+[
+    {
+      "id":1,
+      "name": "User1",
+      "gender": "Male",
+      "subscriptionStatus": "Active",
+      "subscriptionPlan": "Gold",
+      "subscriptionTypeId": 1,
+      "validity": "1 May 2023",
+      "imgsrc": "Male1.png",
+      "interests": ["action", "romantic", "thriller"]
+    },
+    {
+      "id":2,
+      "name": "User2",
+      "gender": "Male",
+      "subscriptionStatus": "Active",
+      "subscriptionPlan": "Silver",
+      "subscriptionTypeId": 2,
+      "validity": "1 May 2023",
+      "imgsrc": "Male2.png",
+      "interests": ["romcom", "blackcomedy", "thriller"]
+    },
+    {
+      "id":3,
+      "name": "User3",
+      "gender": "Male",
+      "subscriptionStatus": "Active",
+      "subscriptionPlan": "Platinum",
+      "subscriptionTypeId": 3,
+      "validity": "1 May 2023",
+      "imgsrc": "Male3.png",
+      "interests": ["biopics", "inspirational", "thriller"]
+    },
+    {
+      "id":4,
+      "name": "User4",
+      "gender": "Male",
+      "subscriptionStatus": "Active",
+      "subscriptionPlan": "Gold",
+      "subscriptionTypeId": 1,
+      "validity": "1 May 2023",
+      "imgsrc": "Male4.png",
+      "interests": ["action", "romantic", "biopics"]
+    },
+    {
+      "id":5,
+      "name": "User5",
+      "gender": "Female",
+      "subscriptionStatus": "Active",
+      "subscriptionPlan": "Gold",
+      "subscriptionTypeId": 1,
+      "validity": "1 May 2023",
+      "imgsrc": "Female1.png",
+      "interests": ["romcom", "inspirational", "blackcomedy"]
+    },
+    {
+      "id":6,
+      "name": "User6",
+      "gender": "Female",
+      "subscriptionStatus": "Active",
+      "subscriptionPlan": "Platinum",
+      "subscriptionTypeId": 3,
+      "validity": "1 May 2023",
+      "imgsrc": "Female2.png",
+      "interests": ["traveldiaries", "inspirational", "action"]
+    },
+    {
+      "id":7,
+      "name": "User7",
+      "gender": "Female",
+      "subscriptionStatus": "Active",
+      "subscriptionPlan": "Silver",
+      "subscriptionTypeId": 2,
+      "validity": "1 May 2023",
+      "imgsrc": "Female3.png",
+      "interests": ["traveldiaries", "inspirational", "action"]
+    },
+    {
+      "id":8,
+      "name": "User8",
+      "gender": "Female",
+      "subscriptionStatus": "Active",
+      "subscriptionPlan": "Platinum",
+      "subscriptionTypeId": 3,
+      "validity": "1 May 2023",
+      "imgsrc": "Female4.png",
+      "interests": ["romcom", "inspirational", "blackcomedy"]
+    }
+  ]
