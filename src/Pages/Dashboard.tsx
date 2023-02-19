@@ -36,7 +36,7 @@ export default function Dashboard() {
         <Heading as="h2" size="xl">
           {"User Subscriptions"}
         </Heading>
-        <SimpleGrid columns={3} spacing={6} py="40px">
+        <SimpleGrid columns={4} spacing={6} py="40px">
           {JsonData.map((users) => {
             return (
               <Center py={6} _hover={{ boxShadow: "2xl" }} key={users.id}>
