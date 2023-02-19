@@ -23,6 +23,7 @@ import {
 import { PhoneIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
 import PopUpForm from "../Views/PopUpForm";
 import JsonData from "../data.json";
+import Nav from "../Components/Nav";
 
 export default function Dashboard() {
   const [isFormOpen, setFormOpen] = useState(false);
@@ -31,13 +32,8 @@ export default function Dashboard() {
   };
 
   return (
-    // <Nav />
     <Stack align={"center"}>
-      <Button maxW={200} colorScheme={"blue"} onClick={() => parentToChild()}>
-        Add User <AddIcon ml={2} boxSize={3} />
-      </Button>
-      <PopUpForm show={isFormOpen} close={() => setFormOpen(false)} />
-
+      <Nav />
       <Box mx="200px">
         <Heading as="h2" size="xl">
           {"User Subscriptions"}
@@ -45,7 +41,7 @@ export default function Dashboard() {
         <SimpleGrid columns={3} spacing={6} py="40px">
           {JsonData.map((users) => {
             return (
-              <Center py={6} _hover={{ boxShadow: '2xl' }} key={users.id}>
+              <Center py={6} _hover={{ boxShadow: "2xl" }} key={users.id}>
                 <Box
                   maxW={"320px"}
                   w={"full"}
@@ -108,4 +104,4 @@ export default function Dashboard() {
       </Box>
     </Stack>
   );
-};
+}

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState, useRef } from "react";
 import {
   Modal,
+  Box,
   ModalOverlay,
   ModalContent,
   ModalHeader,
@@ -15,6 +16,18 @@ import {
   Checkbox,
   CheckboxGroup,
   Stack,
+  Alert,
+  AlertIcon,
+  AlertTitle,
+  AlertDescription,
+  AlertDialog,
+  AlertDialogBody,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogContent,
+  AlertDialogOverlay,
+  useDisclosure,
+  AlertDialogCloseButton,
 } from "@chakra-ui/react";
 
 export default function PopUpForm(props: any) {
@@ -43,8 +56,11 @@ export default function PopUpForm(props: any) {
     console.log("Checkbox => ", checkedItems);
     console.log("userJSONdata => ", createJSONObj(e.target));
     setCheckedItems(initialCheckboxState);
-    alert("Data Submitted!");
     props.close();
+    onOpen();
+    setTimeout(() => {
+      onClose();
+    }, 3000);
   };
 
   const createJSONObj = (userData: any) => {
@@ -81,8 +97,40 @@ export default function PopUpForm(props: any) {
     return [startDate, endDate];
   };
 
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const cancelRef = useRef<HTMLInputElement>(null);
+
   return (
     <>
+      <AlertDialog
+        motionPreset="slideInBottom"
+        leastDestructiveRef={cancelRef}
+        onClose={onClose}
+        isOpen={isOpen}
+        isCentered
+      >
+        <AlertDialogOverlay />
+        <AlertDialogContent>
+          <Alert
+            status="success"
+            variant="subtle"
+            flexDirection="column"
+            alignItems="center"
+            justifyContent="center"
+            textAlign="center"
+            height="200px"
+          >
+            <AlertIcon boxSize="40px" mr={0} />
+            <AlertTitle mt={4} mb={1} fontSize="lg">
+              Success!
+            </AlertTitle>
+            <AlertDescription maxWidth="sm">
+              User has been successfully added.
+            </AlertDescription>
+          </Alert>
+        </AlertDialogContent>
+      </AlertDialog>
+
       <Modal isOpen={props.show} onClose={props.close}>
         <ModalOverlay />
         <ModalContent>
@@ -170,7 +218,7 @@ export default function PopUpForm(props: any) {
                       ])
                     }
                   >
-                    Comedey
+                    Comedy
                   </Checkbox>
                   <Checkbox
                     isChecked={checkedItems[3]}
