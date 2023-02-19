@@ -12,27 +12,48 @@ import {
   FormLabel,
   Input,
   Select,
+  Checkbox,
+  CheckboxGroup,
+  Stack,
 } from "@chakra-ui/react";
 
 export default function PopUpForm(props: any) {
-  const MONTH_DURATION:any = {
+  const MONTH_DURATION: any = {
     "1m": 1,
     "3m": 3,
     "6m": 6,
     "12m": 12,
-  }
+  };
+
+  const initialCheckboxState = [false, false, false, false, false, false];
+
+  const [checkedItems, setCheckedItems] = useState(initialCheckboxState);
+
+  const CHECKED_LIST = [
+    "action",
+    "romance",
+    "comedy",
+    "thriller",
+    "self-development",
+    "educational",
+  ];
 
   const handleAddUser = (e: any) => {
     e.preventDefault();
+    console.log("Checkbox => ", checkedItems);
     console.log("userJSONdata => ", createJSONObj(e.target));
+    setCheckedItems(initialCheckboxState);
     alert("Data Submitted!");
     props.close();
   };
 
   const createJSONObj = (userData: any) => {
     const [startDate, endDate] = calculateValidity(userData[3].value);
+    const genreTags = fetchGentreTags(checkedItems);
+    // fetchGentreTags(checkedItems);
     let JSONdata = {
       name: userData[0].value,
+      genre: genreTags,
       gender: userData[1].value,
       subscriptionPlan: userData[2].value,
       startDate: startDate,
@@ -41,12 +62,24 @@ export default function PopUpForm(props: any) {
     return JSONdata;
   };
 
-  const calculateValidity = (planDuration:string) => {
+  const fetchGentreTags = (checkedItems: Array<boolean>) => {
+    let SelectedCheckList: any[] = [];
+    CHECKED_LIST.forEach((el, i) => {
+      if (checkedItems[i]) {
+        SelectedCheckList.push(el);
+      }
+    });
+    return SelectedCheckList;
+  };
+
+  const calculateValidity = (planDuration: string) => {
     let now = new Date();
     let startDate = now;
-    let endDate = new Date(now.setMonth(now.getMonth() + MONTH_DURATION[planDuration]))
-    return([startDate, endDate])
-  }
+    let endDate = new Date(
+      now.setMonth(now.getMonth() + MONTH_DURATION[planDuration])
+    );
+    return [startDate, endDate];
+  };
 
   return (
     <>
@@ -81,7 +114,7 @@ export default function PopUpForm(props: any) {
                 </Select>
               </FormControl>
 
-              <FormControl>
+              <FormControl marginBottom={5}>
                 <FormLabel>Plan Duration</FormLabel>
                 <Select placeholder="Select Duration">
                   <option value="1m">Monthly Plan</option>
@@ -90,6 +123,102 @@ export default function PopUpForm(props: any) {
                   <option value="12m">Annual Plan</option>
                 </Select>
               </FormControl>
+
+              <CheckboxGroup>
+                <FormLabel>Genre</FormLabel>
+                <Stack direction={"column"}>
+                  <Checkbox
+                    isChecked={checkedItems[0]}
+                    onChange={(e) =>
+                      setCheckedItems([
+                        e.target.checked,
+                        checkedItems[1],
+                        checkedItems[2],
+                        checkedItems[3],
+                        checkedItems[4],
+                        checkedItems[5],
+                      ])
+                    }
+                  >
+                    Action
+                  </Checkbox>
+                  <Checkbox
+                    isChecked={checkedItems[1]}
+                    onChange={(e) =>
+                      setCheckedItems([
+                        checkedItems[0],
+                        e.target.checked,
+                        checkedItems[2],
+                        checkedItems[3],
+                        checkedItems[4],
+                        checkedItems[5],
+                      ])
+                    }
+                  >
+                    Romance
+                  </Checkbox>
+                  <Checkbox
+                    isChecked={checkedItems[2]}
+                    onChange={(e) =>
+                      setCheckedItems([
+                        checkedItems[0],
+                        checkedItems[1],
+                        e.target.checked,
+                        checkedItems[3],
+                        checkedItems[4],
+                        checkedItems[5],
+                      ])
+                    }
+                  >
+                    Comedey
+                  </Checkbox>
+                  <Checkbox
+                    isChecked={checkedItems[3]}
+                    onChange={(e) =>
+                      setCheckedItems([
+                        checkedItems[0],
+                        checkedItems[1],
+                        checkedItems[2],
+                        e.target.checked,
+                        checkedItems[4],
+                        checkedItems[5],
+                      ])
+                    }
+                  >
+                    Thriller
+                  </Checkbox>
+                  <Checkbox
+                    isChecked={checkedItems[4]}
+                    onChange={(e) =>
+                      setCheckedItems([
+                        checkedItems[0],
+                        checkedItems[1],
+                        checkedItems[2],
+                        checkedItems[3],
+                        e.target.checked,
+                        checkedItems[5],
+                      ])
+                    }
+                  >
+                    Self-Development
+                  </Checkbox>
+                  <Checkbox
+                    isChecked={checkedItems[5]}
+                    onChange={(e) =>
+                      setCheckedItems([
+                        checkedItems[0],
+                        checkedItems[1],
+                        checkedItems[2],
+                        checkedItems[3],
+                        checkedItems[4],
+                        e.target.checked,
+                      ])
+                    }
+                  >
+                    Educational
+                  </Checkbox>
+                </Stack>
+              </CheckboxGroup>
             </form>
           </ModalBody>
           <ModalFooter>
