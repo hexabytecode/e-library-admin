@@ -22,92 +22,9 @@ import {
 } from "@chakra-ui/react";
 import { PhoneIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
 import PopUpForm from "../Views/PopUpForm";
-// import Nav from "../Components/Nav";
+import JsonData from "../data.json";
 
 export default function Dashboard() {
-  const regUsers = [
-    {
-      name: "User1",
-      gender: "Male",
-      subscriptionStatus: "Active",
-      subscriptionPlan: "Gold",
-      subscriptionTypeId: 1,
-      validity: "1 May 2023",
-      imgsrc: "Male1.png",
-      interests: ["action", "romantic", "thriller"],
-    },
-    {
-      name: "User2",
-      gender: "Male",
-      subscriptionStatus: "Active",
-      subscriptionPlan: "Silver",
-      subscriptionTypeId: 2,
-      validity: "1 May 2023",
-      imgsrc: "Male2.png",
-      interests: ["romcom", "blackcomedy", "thriller"],
-    },
-    {
-      name: "User3",
-      gender: "Male",
-      subscriptionStatus: "Active",
-      subscriptionPlan: "Platinum",
-      subscriptionTypeId: 3,
-      validity: "1 May 2023",
-      imgsrc: "Male3.png",
-      interests: ["biopics", "inspirational", "thriller"],
-    },
-    {
-      name: "User4",
-      gender: "Male",
-      subscriptionStatus: "Active",
-      subscriptionPlan: "Gold",
-      subscriptionTypeId: 1,
-      validity: "1 May 2023",
-      imgsrc: "Male4.png",
-      interests: ["action", "romantic", "biopics"],
-    },
-    {
-      name: "User5",
-      gender: "Female",
-      subscriptionStatus: "Active",
-      subscriptionPlan: "Gold",
-      subscriptionTypeId: 1,
-      validity: "1 May 2023",
-      imgsrc: "Female1.png",
-      interests: ["romcom", "inspirational", "blackcomedy"],
-    },
-    {
-      name: "User6",
-      gender: "Female",
-      subscriptionStatus: "Active",
-      subscriptionPlan: "Platinum",
-      subscriptionTypeId: 3,
-      validity: "1 May 2023",
-      imgsrc: "Female2.png",
-      interests: ["traveldiaries", "inspirational", "action"],
-    },
-    {
-      name: "User7",
-      gender: "Female",
-      subscriptionStatus: "Active",
-      subscriptionPlan: "Silver",
-      subscriptionTypeId: 2,
-      validity: "1 May 2023",
-      imgsrc: "Female3.png",
-      interests: ["traveldiaries", "inspirational", "action"],
-    },
-    {
-      name: "User8",
-      gender: "Female",
-      subscriptionStatus: "Active",
-      subscriptionPlan: "Platinum",
-      subscriptionTypeId: 3,
-      validity: "1 May 2023",
-      imgsrc: "Female4.png",
-      interests: ["romcom", "inspirational", "blackcomedy"],
-    },
-  ];
-
   const [isFormOpen, setFormOpen] = useState(false);
   const parentToChild = () => {
     setFormOpen(true);
@@ -125,10 +42,10 @@ export default function Dashboard() {
         <Heading as="h2" size="xl">
           {"User Subscriptions"}
         </Heading>
-        <SimpleGrid columns={4} spacing={6} py="40px">
-          {regUsers.map((users) => {
+        <SimpleGrid columns={3} spacing={6} py="40px">
+          {JsonData.map((users) => {
             return (
-              <Center py={6}>
+              <Center py={6} _hover={{ boxShadow: '2xl' }} key={users.id}>
                 <Box
                   maxW={"320px"}
                   w={"full"}
