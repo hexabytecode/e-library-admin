@@ -77,10 +77,10 @@ export default function WithSubnavigation() {
         <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
           <Avatar
           src={"../logo1.png"}
-          width="200px"
+          width="150px"
           height="40px"
           objectFit={"scale-down"}
-          >
+          borderRadius={'none'}          >
 
           </Avatar>
 
