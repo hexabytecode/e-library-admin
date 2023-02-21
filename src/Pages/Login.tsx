@@ -6,6 +6,7 @@ import {
   FormLabel,
   FormErrorMessage,
   Input,
+  Heading,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 
@@ -29,6 +30,7 @@ export default function Form() {
   return (
     <form onSubmit={handleSubmit}>
       <Stack maxW={400} m="auto" spacing={6} mt={40}>
+        <Heading>Login</Heading>
         <FormControl isInvalid={Error} isRequired>
           <FormLabel>Username</FormLabel>
           <Input isRequired type="text" name="userN" placeholder='User Name' />

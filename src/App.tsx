@@ -16,8 +16,8 @@ function Root() {
       <Routes>
         <Route path="/" element={ <Login /> } />
         <Route path="/dashboard" element={ <Dashboard /> } />
-        <Route path="/about" element={ <AboutUs /> } />
-        <Route path="/contact" element={ <ContactUs /> } />
+        <Route path="/aboutus" element={ <AboutUs /> } />
+        <Route path="/contactus" element={ <ContactUs /> } />
       </Routes>
     </div>
   );

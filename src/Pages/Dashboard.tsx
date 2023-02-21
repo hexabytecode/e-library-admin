@@ -2,26 +2,17 @@ import React, { useState } from "react";
 import {
   Stack,
   SimpleGrid,
-  Card,
-  CardBody,
   Text,
   Box,
   Heading,
   Image,
-  Tag,
-  TagLabel,
-  TagRightIcon,
-  Divider,
-  CardFooter,
-  Button,
   Center,
   useColorModeValue,
-  Badge,
-  Link,
+  Badge,  
   Avatar,
+  Flex,
+  Link,
 } from "@chakra-ui/react";
-import { PhoneIcon, AddIcon, WarningIcon } from "@chakra-ui/icons";
-import PopUpForm from "../Views/PopUpForm";
 import JsonData from "../data.json";
 
 export default function Dashboard() {
@@ -31,6 +22,7 @@ export default function Dashboard() {
   };
 
   return (
+
     <Stack align={"center"}>
       <Box mx="200px">
         <Heading as="h2" size="xl">
@@ -53,17 +45,17 @@ export default function Dashboard() {
                     src={users.imgsrc}
                     mb={4}
                     pos={"relative"}
-                    _after={{
-                      content: '""',
-                      w: 4,
-                      h: 4,
-                      bg: "green.300",
-                      border: "2px solid white",
-                      rounded: "full",
-                      pos: "absolute",
-                      bottom: 0,
-                      right: 3,
-                    }}
+                    // _after={{
+                    //   content: '""',
+                    //   w: 4,
+                    //   h: 4,
+                    //   bg: "green.300",
+                    //   border: "2px solid white",
+                    //   rounded: "full",
+                    //   pos: "absolute",
+                    //   bottom: 0,
+                    //   right: 3,
+                    // }}
                   />
                   <Heading fontSize={"2xl"} fontFamily={"body"}>
                     {users.name}
@@ -71,15 +63,28 @@ export default function Dashboard() {
                   <Text fontWeight={600} color={"gray.500"} mb={4}>
                     {users.gender}
                   </Text>
-                  <Text textAlign={"center"} px={3}>
+                  {/* <Text textAlign={"center"} px={3}>
                     Actress, musician, songwriter and artist. PM for work
                     inquires or{" "}
                     <Link href={"#"} color={"blue.400"}>
                       #tag
                     </Link>{" "}
                     me in your posts
-                  </Text>
-
+                  </Text> */}
+                  <Stack direction={'row'} justify={'center'} spacing={6}>
+                    <Stack spacing={0} align={'center'}>
+                      <Text fontWeight={600}>{users.subscriptionStatus}</Text>
+                      <Text fontSize={'sm'} color={'gray.500'}>
+                        User Status
+                      </Text>
+                    </Stack>
+                    <Stack spacing={0} align={'center'}>
+                      <Text fontWeight={600}>{users.subscriptionPlan}</Text>
+                      <Text fontSize={'sm'} color={'gray.500'}>
+                        Subscription Plan
+                      </Text>
+                    </Stack>
+                  </Stack>
                   <Stack
                     align={"center"}
                     justify={"center"}
