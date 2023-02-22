@@ -65,8 +65,8 @@ export default function PopUpForm(props: any) {
 
   const createJSONObj = (userData: any) => {
     const [startDate, endDate] = calculateValidity(userData[3].value);
-    const genreTags = fetchGentreTags(checkedItems);
-    // fetchGentreTags(checkedItems);
+    const genreTags = fetchGenreTags(checkedItems);
+    // fetchGenreTags(checkedItems);
     let JSONdata = {
       name: userData[0].value,
       genre: genreTags,
@@ -78,7 +78,7 @@ export default function PopUpForm(props: any) {
     return JSONdata;
   };
 
-  const fetchGentreTags = (checkedItems: Array<boolean>) => {
+  const fetchGenreTags = (checkedItems: Array<boolean>) => {
     let SelectedCheckList: any[] = [];
     CHECKED_LIST.forEach((el, i) => {
       if (checkedItems[i]) {

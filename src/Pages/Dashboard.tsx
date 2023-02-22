@@ -79,7 +79,9 @@ export default function Dashboard() {
                       </Text>
                     </Stack>
                     <Stack spacing={0} align={'center'}>
-                      <Text fontWeight={600}>{users.subscriptionPlan}</Text>
+                      { users.subscriptionPlan==='Gold' ? ( <Text color={"yellow.500"} fontWeight={600}>{users.subscriptionPlan}</Text> ) :
+                        (users.subscriptionPlan==='Platinum' ? <Text color={"purple.700"} fontWeight={600}>{users.subscriptionPlan}</Text> : <Text color={"silver"} fontWeight={600}>{users.subscriptionPlan}</Text>)
+                      }
                       <Text fontSize={'sm'} color={'gray.500'}>
                         Subscription Plan
                       </Text>

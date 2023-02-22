@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ChakraProvider, Stack } from "@chakra-ui/react";
 import { ColorModeSwitcher } from "./ColorModeSwitcher";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 
 import Login from "./Pages/Login";
 import Dashboard from "./Pages/Dashboard";
@@ -14,7 +14,8 @@ function Root() {
     <div>
       <Nav />
       <Routes>
-        <Route path="/" element={ <Login /> } />
+        <Route index element={ <Navigate to="/login" /> } />
+        <Route path="/login" element={ <Login /> } />
         <Route path="/dashboard" element={ <Dashboard /> } />
         <Route path="/aboutus" element={ <AboutUs /> } />
         <Route path="/contactus" element={ <ContactUs /> } />
